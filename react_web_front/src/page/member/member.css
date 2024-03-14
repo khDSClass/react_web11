@@ -11,4 +11,42 @@
   font-family: ns-black;
   font-size: 26px;
   padding: 30px;
+  border-bottom: 2px solid #378ce7;
+  margin-bottom: 20px;
+}
+.join-wrap {
+  width: 500px;
+  margin: 0 auto;
+  padding: 30px;
+}
+.join-input-wrap {
+  padding: 15px 0px;
+  display: flex;
+  flex-direction: column;
+}
+.join-input-wrap > div {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.join-input-wrap > div > .label {
+  width: 30%;
+}
+.join-input-wrap > div > .label > label {
+  font-size: 18px;
+  font-family: ns-b;
+  color: #378ce7;
+}
+.join-input-wrap > div > .input {
+  width: 70%;
+}
+
+.check-msg {
+  width: 70%;
+  font-size: 13px;
+  color: #f44336;
+  align-self: flex-end;
+}
+.join-btn-box {
+  padding: 30px 0px;
 }
