@@ -55,6 +55,18 @@ public class MemberController {
 			return new ResponseEntity<ResponseDTO>(response,response.getHttpStatus());
 		}
 	}
+	
+	@PostMapping(value="/login")
+	public ResponseEntity<ResponseDTO> login(@RequestBody Member member){
+		Member m = memberService.login(member);
+		if(m != null) {
+			ResponseDTO response = new ResponseDTO(200, HttpStatus.OK, "success", null);
+			return new ResponseEntity<ResponseDTO>(response, response.getHttpStatus());
+		}else {
+			ResponseDTO response = new ResponseDTO(200, HttpStatus.OK, "fail", null);
+			return new ResponseEntity<ResponseDTO>(response, response.getHttpStatus());
+		}
+	}
 }
 
 

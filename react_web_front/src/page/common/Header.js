@@ -39,7 +39,7 @@ const Navi = () => {
 const HeaderLink = () => {
   return (
     <div className="header-link">
-      <Link to="#" title="로그인">
+      <Link to="/login" title="로그인">
         <span className="material-icons">login</span>
       </Link>
       <Link to="/join" title="회원가입">
