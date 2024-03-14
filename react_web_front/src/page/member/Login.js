@@ -5,6 +5,7 @@ import axios from "axios";
 import Swal from "sweetalert2";
 
 const Login = () => {
+  const backServer = process.env.REACT_APP_BACK_SERVER;
   const navigate = useNavigate();
   const [memberId, setMemberId] = useState("");
   const [memberPw, setMemberPw] = useState("");
@@ -12,7 +13,7 @@ const Login = () => {
     if (memberId !== "" && memberPw !== "") {
       const obj = { memberId, memberPw };
       axios
-        .post("http://192.168.10.96:8888/member/login", obj)
+        .post(backServer + "/member/login", obj)
         .then((res) => {
           if (res.data.message === "success") {
             navigate("/");
