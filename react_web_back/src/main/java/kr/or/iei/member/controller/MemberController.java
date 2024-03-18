@@ -4,9 +4,12 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.CrossOrigin;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestAttribute;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -58,13 +61,56 @@ public class MemberController {
 	
 	@PostMapping(value="/login")
 	public ResponseEntity<ResponseDTO> login(@RequestBody Member member){
-		Member m = memberService.login(member);
-		if(m != null) {
-			ResponseDTO response = new ResponseDTO(200, HttpStatus.OK, "success", null);
+		String accessToken = memberService.login(member);
+		if(accessToken != null) {
+			ResponseDTO response = new ResponseDTO(200, HttpStatus.OK, "success", accessToken);
 			return new ResponseEntity<ResponseDTO>(response, response.getHttpStatus());
 		}else {
 			ResponseDTO response = new ResponseDTO(200, HttpStatus.OK, "fail", null);
 			return new ResponseEntity<ResponseDTO>(response, response.getHttpStatus());
+		}
+	}
+	
+	@GetMapping
+	public ResponseEntity<ResponseDTO> getMember(@RequestAttribute String memberId){
+		Member member = memberService.selectOneMember(memberId);
+		ResponseDTO response = new ResponseDTO(200, HttpStatus.OK, "success", member);
+		return new ResponseEntity<ResponseDTO>(response,response.getHttpStatus());
+	}
+	
+	@PatchMapping(value="/phone")
+	public ResponseEntity<ResponseDTO> updatePhone(@RequestBody Member member){
+		int result = memberService.updatePhone(member);
+		if(result > 0) {
+			ResponseDTO response = new ResponseDTO(200, HttpStatus.OK, "success", null);
+			return new ResponseEntity<ResponseDTO>(response,response.getHttpStatus());
+		}else {
+			ResponseDTO response = new ResponseDTO(200, HttpStatus.OK, "fail", null);
+			return new ResponseEntity<ResponseDTO>(response,response.getHttpStatus());
+		}
+	}
+	@DeleteMapping
+	public ResponseEntity<ResponseDTO> deleteMember(@RequestAttribute String memberId){
+		int result = memberService.deleteMember(memberId);
+		if(result > 0) {
+			ResponseDTO response = new ResponseDTO(200, HttpStatus.OK, "success", null);
+			return new ResponseEntity<ResponseDTO>(response,response.getHttpStatus());
+		}else {
+			ResponseDTO response = new ResponseDTO(200, HttpStatus.OK, "fail", null);
+			return new ResponseEntity<ResponseDTO>(response,response.getHttpStatus());
+		}
+	}
+	
+	@PostMapping(value="/pw")
+	public ResponseEntity<ResponseDTO> checkPw(@RequestBody Member member,@RequestAttribute String memberId){
+		member.setMemberId(memberId);
+		int result = memberService.checkPw(member);
+		if(result == 1) {
+			ResponseDTO response = new ResponseDTO(200, HttpStatus.OK, "valid", null);
+			return new ResponseEntity<ResponseDTO>(response,response.getHttpStatus());
+		}else {
+			ResponseDTO response = new ResponseDTO(200, HttpStatus.OK, "invalid", null);
+			return new ResponseEntity<ResponseDTO>(response,response.getHttpStatus());
 		}
 	}
 }

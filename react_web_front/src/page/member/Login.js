@@ -4,7 +4,8 @@ import { Button1, Button3, Input } from "../../component/FormFrm";
 import axios from "axios";
 import Swal from "sweetalert2";
 
-const Login = () => {
+const Login = (props) => {
+  const loginFunction = props.login;
   const backServer = process.env.REACT_APP_BACK_SERVER;
   const navigate = useNavigate();
   const [memberId, setMemberId] = useState("");
@@ -16,6 +17,7 @@ const Login = () => {
         .post(backServer + "/member/login", obj)
         .then((res) => {
           if (res.data.message === "success") {
+            loginFunction(res.data.data);
             navigate("/");
           } else {
             Swal.fire("아이디 또는 비밀번호를 확인하세요");

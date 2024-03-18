@@ -1,0 +1,34 @@
+/*
+메인색상
+#5356FF rgb(83, 86, 255)
+#378CE7 rgb(55, 140, 231)
+#67C6E3 rgb(103, 198, 227)
+#DFF5FF rgb(223, 245, 255)
+*/
+.side-menu {
+  width: 200px;
+}
+.side-menu > ul {
+  list-style-type: none;
+  box-sizing: border-box;
+  padding-top: 30px;
+}
+.side-menu > ul > li > a {
+  display: block;
+  padding: 10px;
+  color: #378ce7;
+  font-family: ns-b;
+  position: relative;
+}
+.side-menu > ul > li > a > span {
+  color: #378ce7;
+  position: absolute;
+  right: 0;
+}
+.side-menu > ul > li > a.active-side {
+  background-color: #378ce7;
+  color: #fff;
+}
+.side-menu > ul > li > a.active-side > span {
+  color: #fff;
+}

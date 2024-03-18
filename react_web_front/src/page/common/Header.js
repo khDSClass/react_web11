@@ -1,7 +1,9 @@
 import "./default.css";
 import { Link } from "react-router-dom";
 
-const Header = () => {
+const Header = (props) => {
+  const isLogin = props.isLogin;
+  const logout = props.logout;
   return (
     <header>
       <div className="header">
@@ -9,7 +11,7 @@ const Header = () => {
           <Link to="/">LEE`S WORLD</Link>
         </div>
         <Navi />
-        <HeaderLink />
+        <HeaderLink isLogin={isLogin} logout={logout} />
       </div>
     </header>
   );
@@ -36,15 +38,32 @@ const Navi = () => {
   );
 };
 
-const HeaderLink = () => {
+const HeaderLink = (props) => {
+  const isLogin = props.isLogin;
+  const logout = props.logout;
   return (
     <div className="header-link">
-      <Link to="/login" title="로그인">
-        <span className="material-icons">login</span>
-      </Link>
-      <Link to="/join" title="회원가입">
-        <span className="material-icons">assignment_ind</span>
-      </Link>
+      {isLogin ? (
+        <>
+          <Link to="/member" title="마이페이지">
+            <span className="material-icons">face</span>
+          </Link>
+          <Link to="#" title="로그아웃">
+            <span className="material-icons" onClick={logout}>
+              logout
+            </span>
+          </Link>
+        </>
+      ) : (
+        <>
+          <Link to="/login" title="로그인">
+            <span className="material-icons">login</span>
+          </Link>
+          <Link to="/join" title="회원가입">
+            <span className="material-icons">assignment_ind</span>
+          </Link>
+        </>
+      )}
     </div>
   );
 };

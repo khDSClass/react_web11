@@ -14,7 +14,7 @@ const Input = (props) => {
       className="input-form"
       id={content}
       type={type}
-      value={data}
+      value={data || ""}
       onChange={changeData}
       onBlur={blurEvent}
     />

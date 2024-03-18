@@ -7,4 +7,10 @@
 	<insert id="insertMember">
 		insert into member_tbl values(#{memberId},#{memberPw},#{memberName},#{memberPhone},2)
 	</insert>
+	<update id="updateMember">
+		update member_tbl set member_phone=#{memberPhone} where member_id=#{memberId}
+	</update>
+	<delete id="deleteMember">
+		delete from member_tbl where member_id=#{memberId}
+	</delete>
 </mapper>
