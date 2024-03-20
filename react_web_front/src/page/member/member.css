@@ -86,6 +86,12 @@
 .mypage-title {
   padding: 10px 0px;
   border-bottom: 2px solid #378ce7;
+  display: flex;
+  align-items: center;
+}
+.mypage-title > a > .admin-icon {
+  color: #378ce7;
+  font-size: 30px;
 }
 .mypage-title > span {
   color: #378ce7;

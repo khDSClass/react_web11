@@ -9,6 +9,7 @@ import MemberInfo from "./page/member/MemberInfo";
 import axios from "axios";
 import MemberMain from "./page/member/MemberMain";
 import BoardMain from "./page/board/BoardMain";
+import AdminMain from "./page/admin/AdminMain";
 
 function App() {
   //스토리지에 저장된 데이터를 꺼내서 객체형식으로 변환
@@ -71,6 +72,7 @@ function App() {
             element={<MemberMain isLogin={isLogin} logout={logout} />}
           />
           <Route path="/board/*" element={<BoardMain isLogin={isLogin} />} />
+          <Route path="/admin/*" element={<AdminMain />} />
         </Routes>
       </div>
       <Footer />

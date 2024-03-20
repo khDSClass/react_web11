@@ -1,0 +1,53 @@
+/*
+메인색상
+#5356FF rgb(83, 86, 255)
+#378CE7 rgb(55, 140, 231)
+#67C6E3 rgb(103, 198, 227)
+#DFF5FF rgb(223, 245, 255)
+*/
+.admin-member-tbl-box > table {
+  width: 100%;
+  border-spacing: 0;
+}
+.admin-member-tbl-box > table td {
+  padding: 5px;
+  text-align: center;
+  border: 1px solid #eee;
+}
+.admin-member-tbl-box > table > thead td {
+  background-color: #5356ff;
+  color: #fff;
+}
+.admin-paging-wrap {
+  margin-top: 50px;
+}
+
+.admin-board-tbl > table {
+  width: 100%;
+  border-spacing: 0;
+}
+.admin-board-tbl > table td {
+  text-align: center;
+  padding: 10px 5px;
+  border-bottom: 1px solid #eee;
+}
+.admin-board-tbl > table > thead td {
+  background-color: #5356ff;
+  color: #fff;
+}
+.admin-board-tbl .title-td {
+  text-align: left;
+}
+.admin-board-tbl .title-td > div {
+  width: 400px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.status-td .MuiSwitch-thumb {
+  color: #5356ff;
+}
+.status-td .MuiSwitch-track {
+  background-color: rgb(103, 198, 227);
+}

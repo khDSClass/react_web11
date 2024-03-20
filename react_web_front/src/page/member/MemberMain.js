@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { Route, Routes, useNavigate } from "react-router-dom";
+import { Link, Route, Routes, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
 import SideMenu from "../../component/SideMenu";
 import MemberInfo from "./MemberInfo";
@@ -37,6 +37,13 @@ const MemberMain = (props) => {
     <div className="mypage-wrap">
       <div className="mypage-title">
         <span>MYPAGE</span>
+        {member && member.memberType === 1 ? (
+          <Link to="/admin/main">
+            <span className="material-icons admin-icon">manage_accounts</span>
+          </Link>
+        ) : (
+          ""
+        )}
       </div>
       <div className="mypage-content">
         <SideMenu menus={menus} setMenus={setMenus} />

@@ -33,4 +33,10 @@ public interface BoardDao {
 
 	int updateBoard(Board board);
 
+	int adminTotalCount();
+
+	List adminBoardList(PageInfo pi);
+
+	int changeBoardStaus(Board board);
+
 }

@@ -5,3 +5,8 @@ npm install sweetalert2
 
 2024-03-19
 npm install react-quill
+npm install quill-image-resize-module-react
+
+2024-03-20
+npm install @mui/material @emotion/react @emotion/styled
+npm install @mui/material @mui/styled-engine-sc styled-components

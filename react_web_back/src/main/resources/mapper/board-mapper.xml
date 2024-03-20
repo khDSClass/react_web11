@@ -70,6 +70,25 @@
   		board_img = #{boardImg}
   	where board_no = #{boardNo}
   </update>
+  <select id="adminTotalCount" resultType="int">
+  	select count(*) from board
+  </select>
+  <select id="adminBoardList" resultType="board">
+  	select * from
+	    (select rownum as rnum, b.* from
+	        (select 
+	            board_no,
+	            board_title,
+	            board_img,
+	            board_writer,
+	            board_status,
+	            to_char(board_date,'yyyy-mm-dd') as board_date
+	        from board order by board_no desc)b)
+	where rnum between #{start} and #{end}
+  </select>
+  <update id="changeBoardStaus">
+  	update board set board_status=#{boardStatus} where board_no=#{boardNo}
+  </update>
 </mapper>
 
 
