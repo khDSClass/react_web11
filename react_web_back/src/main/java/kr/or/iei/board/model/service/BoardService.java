@@ -62,6 +62,28 @@ public class BoardService {
 		}
 		return null;
 	}
+	@Transactional
+	public List<BoardFile> updateBoard(Board board, ArrayList<BoardFile> fileList) {
+		List<BoardFile> delFileList = new ArrayList<BoardFile>();
+		int result = 0;
+		int delFileCount = 0;
+		//삭제한 파일이 있으면 파일정보를 조회하고, DB에서 정보 삭제
+		if(board.getDelFileNo() != null) {
+			delFileCount = board.getDelFileNo().length;
+			delFileList = boardDao.selectBoardFile(board.getDelFileNo());
+			result += boardDao.deleteBoardFile(board.getDelFileNo());
+		}
+		//추가한 파일이 있으면 DB에 추가
+		for(BoardFile bf : fileList) {
+			result += boardDao.insertBoardFile(bf);
+		}
+		result += boardDao.updateBoard(board);
+		if(result == 1+fileList.size()+delFileCount) {
+			return delFileList;
+		}else {
+			return null;
+		}		
+	}
 }
 
 

@@ -110,7 +110,15 @@
 }
 .file-zone > p {
   padding: 5px;
+  position: relative;
 }
+.file-zone > p > .del-file-icon {
+  position: absolute;
+  right: 0;
+  top: 5px;
+  cursor: pointer;
+}
+
 .file-zone > p:hover {
   background-color: rgba(103, 198, 227, 0.1);
 }

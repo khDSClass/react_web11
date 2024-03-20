@@ -56,7 +56,6 @@ function App() {
       //저장해 둔 만료시간을 꺼내서 현재시간과 비교한 후 종료함수 설정
       const remainingTime = expiredTime.getTime() - new Date().getTime();
       setTimeout(logout, remainingTime);
-      console.log(token);
     }
   }, []);
   return (

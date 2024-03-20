@@ -50,6 +50,26 @@
   <delete id="deleteBoard">
   	delete from board where board_no = #{boardNo}
   </delete>
+  
+  <select id="selectBoardFile" resultType="boardFile">
+  	select * from board_file where board_file_no in 
+  	<foreach collection="array" open="(" close=")" separator="," item="boardFileNo">
+  		#{boardFileNo}
+  	</foreach>
+  </select>
+  <delete id="deleteBoardFile">
+  	delete from board_file where board_file_no in
+  	<foreach collection="array" open="(" close=")" separator="," item="boardFileNo">
+  		#{boardFileNo}
+  	</foreach>
+  </delete>
+  <update id="updateBoard">
+  	update board set
+  		board_title = #{boardTitle},
+  		board_content = #{boardContent},
+  		board_img = #{boardImg}
+  	where board_no = #{boardNo}
+  </update>
 </mapper>
 
 

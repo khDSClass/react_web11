@@ -23,6 +23,9 @@ public class Board {
 	private int boardStatus;
 	private String boardDate;
 	private List fileList;
+	
+	private int[] delFileNo;
+	private int thumbnailCheck;
 }
 
 

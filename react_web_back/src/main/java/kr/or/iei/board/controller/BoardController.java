@@ -19,6 +19,7 @@ import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PatchMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestAttribute;
@@ -134,6 +135,44 @@ public class BoardController {
 		}
 	}
 	
+	
+	@PatchMapping
+	public ResponseEntity<ResponseDTO> modifyBoard(@ModelAttribute Board board, @ModelAttribute MultipartFile thumbnail, @ModelAttribute MultipartFile[] boardFile){
+		String savepath = root+"/board/";
+		if(board.getThumbnailCheck() == 1) {//썸네일이 변경된 경우에만
+			if(thumbnail != null) {	//새로첨부한 경우
+				String filepath = fileUtils.upload(savepath, thumbnail);
+				board.setBoardImg(filepath);
+			}else {		//기존파일을 지우기만 한경우
+				board.setBoardImg(null);
+			}
+		}
+		//추가 첨부파일 작업
+		ArrayList<BoardFile> fileList = new ArrayList<BoardFile>();
+		if(boardFile != null) {
+			for(MultipartFile file : boardFile) {
+				String filename = file.getOriginalFilename();
+				String filepath = fileUtils.upload(savepath, file);
+				BoardFile bf = new BoardFile();
+				bf.setFilename(filename);
+				bf.setFilepath(filepath);
+				bf.setBoardNo(board.getBoardNo());
+				fileList.add(bf);
+			}
+		}
+		List<BoardFile> delFileList = boardService.updateBoard(board,fileList);
+		if(delFileList != null) {
+			for(BoardFile bf : delFileList) {
+				File file = new File(savepath+bf.getFilepath());
+				file.delete();
+			}
+			ResponseDTO response = new ResponseDTO(200, HttpStatus.OK, "success", null);
+			return new ResponseEntity<ResponseDTO>(response,response.getHttpStatus());
+		}else {
+			ResponseDTO response = new ResponseDTO(200, HttpStatus.OK, "fail", null);
+			return new ResponseEntity<ResponseDTO>(response,response.getHttpStatus());
+		}
+	}
 }
 
 
