@@ -143,6 +143,7 @@
   display: flex;
   align-items: center;
   justify-content: space-between;
+  padding: 20px;
 }
 .pw-input-wrap > div > label {
   color: #5356ff;
@@ -155,4 +156,7 @@
 }
 .pw-input-wrap > div > button {
   width: 20%;
+}
+.pw-input-wrap > div > input#memberPw {
+  width: 75%;
 }

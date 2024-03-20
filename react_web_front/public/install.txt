@@ -2,3 +2,6 @@
 npm install react-router-dom
 npm install axios
 npm install sweetalert2
+
+2024-03-19
+npm install react-quill

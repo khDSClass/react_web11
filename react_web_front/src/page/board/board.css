@@ -1,0 +1,202 @@
+/*
+메인색상
+#5356FF rgb(83, 86, 255)
+#378CE7 rgb(55, 140, 231)
+#67C6E3 rgb(103, 198, 227)
+#DFF5FF rgb(223, 245, 255)
+*/
+
+.board-title {
+  font-size: 20px;
+  color: #5356ff;
+  font-family: ns-b;
+  text-align: center;
+  padding: 30px 0px;
+  border-bottom: 2px solid #5356ff;
+}
+.board-write-btn {
+  padding: 20px 0px;
+}
+.board-write-btn > button {
+  width: 100px;
+}
+
+.board-list-wrap {
+  overflow: hidden;
+  padding: 10px;
+}
+.board-item {
+  float: left;
+  box-sizing: border-box;
+  width: calc(100% / 4);
+  padding: 30px;
+  cursor: pointer;
+}
+.board-item:hover {
+  box-shadow: 0 2px 10px 0 rgba(0, 0, 0, 0.2);
+}
+.board-item-img {
+  height: 235px;
+}
+.board-item-img > img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.board-item-info {
+  margin-top: 30px;
+}
+.board-item-title {
+  font-size: 1.2em;
+  font-family: ns-eb;
+  margin-bottom: 10px;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.board-item-writer,
+.board-item-date {
+  font-size: 0.9em;
+  font-family: ns-b;
+}
+
+.board-frm-title {
+  font-size: 16px;
+  color: #5356ff;
+  font-family: ns-b;
+  padding: 20px 0px;
+}
+.board-frm-top {
+  display: flex;
+  justify-content: space-between;
+}
+.board-thumbnail {
+  width: 280px;
+  height: 280px;
+  box-sizing: border-box;
+  padding: 10px;
+  border: 1px solid #ccc;
+}
+.board-thumbnail > img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.board-info {
+  width: 900px;
+}
+.board-info-tbl {
+  width: 100%;
+  border-spacing: 0;
+}
+.board-info-tbl tr > td:first-child {
+  width: 150px;
+  padding: 10px 20px;
+  background-color: rgba(55, 140, 231, 0.1);
+  border: 1px solid rgba(55, 140, 231, 0.1);
+}
+.board-info-tbl tr > td:last-child {
+  padding: 10px 20px;
+  border: 1px solid #ccc;
+}
+.board-info-tbl tr > td > input[type="text"] {
+  border: none;
+  padding: 0;
+}
+.file-zone {
+  height: 118px;
+  overflow-y: auto;
+}
+.file-zone > p {
+  padding: 5px;
+}
+.file-zone > p:hover {
+  background-color: rgba(103, 198, 227, 0.1);
+}
+.board-frm-bottom {
+  margin: 10px 0px;
+}
+
+.board-frm-bottom .ql-editor {
+  height: 400px;
+}
+
+.board-view-wrap {
+  width: 1000px;
+  margin: 0 auto;
+  padding: 20px;
+  box-sizing: border-box;
+}
+.board-view-top {
+  display: flex;
+  justify-content: space-between;
+}
+.board-view-thumbnail {
+  width: 400px;
+
+  height: 350px;
+}
+.board-view-thumbnail > img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+.board-view-info {
+  width: 500px;
+  display: flex;
+  flex-direction: column;
+  height: 350px;
+}
+.board-view-info > .board-view-title {
+  font-family: ns-b;
+  font-size: 1.2em;
+  margin-bottom: 20px;
+}
+.board-view-sub-info {
+  display: flex;
+}
+.board-view-sub-info > div {
+  margin-right: 10px;
+  font-size: 0.9em;
+}
+.board-view-file {
+  flex: 1;
+  overflow-y: auto;
+}
+.board-view-file > div:first-child {
+  height: 50px;
+  line-height: 50px;
+  font-family: ns-b;
+  color: #5356ff;
+}
+.board-view-file > .file-zone {
+  height: 230px;
+}
+.board-view-file > .file-zone > .board-file {
+  padding: 10px;
+  position: relative;
+}
+.board-view-file > .file-zone > .board-file:hover {
+  background-color: rgba(103, 198, 227, 0.1);
+}
+.board-file > .file-icon {
+  position: absolute;
+  top: 11px;
+  cursor: pointer;
+}
+.board-file > .file-name {
+  margin-left: 35px;
+}
+
+.board-view-detail {
+  min-height: 400px;
+  padding: 20px;
+}
+.board-view-btn-zone {
+  padding: 20px 0px;
+}
+.board-view-btn-zone > button {
+  width: 100px;
+  margin-right: 20px;
+}

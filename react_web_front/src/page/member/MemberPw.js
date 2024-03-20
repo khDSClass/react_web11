@@ -28,12 +28,55 @@ const MemberPw = () => {
         console.log(res);
       });
   };
+  const changePw = () => {
+    if (memberPw !== "" && memberPwRe !== "" && memberPw === memberPwRe) {
+      const m = { memberPw };
+      axios
+        .patch(backServer + "/member/pw", m)
+        .then((res) => {
+          if (res.data.message === "success") {
+            Swal.fire({ icon: "success", title: "비밀번효 변경 완료" }).then(
+              () => {
+                setIsAuth(false);
+                setMemberPw("");
+                setMemberPwRe("");
+              }
+            );
+          }
+        })
+        .catch((res) => {
+          console.log(res);
+        });
+    }
+  };
   return (
     <div className="mypage-current-wrap">
       <div className="mypage-current-title">비밀번호 수정</div>
       <div className="pw-change-wrap">
         {isAuth ? (
-          ""
+          <>
+            <div className="pw-input-wrap">
+              <div>
+                <label htmlFor="memberPw">새 비밀번호</label>
+                <Input
+                  type="password"
+                  content="memberPw"
+                  data={memberPw}
+                  setData={setMemberPw}
+                />
+              </div>
+              <div>
+                <label htmlFor="memberPwRe">비밀번호 확인</label>
+                <Input
+                  type="password"
+                  content="memberPwRe"
+                  data={memberPwRe}
+                  setData={setMemberPwRe}
+                />
+                <Button1 text="변경하기" clickEvent={changePw} />
+              </div>
+            </div>
+          </>
         ) : (
           <>
             <div className="pw-input-wrap">

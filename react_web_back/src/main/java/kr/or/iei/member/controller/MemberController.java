@@ -113,6 +113,18 @@ public class MemberController {
 			return new ResponseEntity<ResponseDTO>(response,response.getHttpStatus());
 		}
 	}
+	@PatchMapping(value="/pw")
+	public ResponseEntity<ResponseDTO> changePw(@RequestBody Member member, @RequestAttribute String memberId){
+		member.setMemberId(memberId);
+		int result = memberService.changePwMember(member);
+		if(result >0) {
+			ResponseDTO response = new ResponseDTO(200, HttpStatus.OK, "success", null);
+			return new ResponseEntity<ResponseDTO>(response,response.getHttpStatus());
+		}else {
+			ResponseDTO response = new ResponseDTO(200, HttpStatus.OK, "fail", null);
+			return new ResponseEntity<ResponseDTO>(response,response.getHttpStatus());
+		}
+	}
 }
 
 

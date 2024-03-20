@@ -22,7 +22,7 @@ const Navi = () => {
     <nav className="nav">
       <ul>
         <li>
-          <Link to="#">메뉴-1</Link>
+          <Link to="/board/list">게시판</Link>
         </li>
         <li>
           <Link to="#">메뉴-2</Link>
