@@ -166,3 +166,88 @@
 .pw-input-wrap > div > input#memberPw {
   width: 75%;
 }
+
+.chat-content-wrap {
+  border: 2px solid #eee;
+}
+/*채팅 css*/
+.chat-message-area {
+  height: 500px;
+  background-image: url(/public/image/chat-bg.jpg);
+  background-repeat: no-repeat;
+  background-size: cover;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  overflow-y: auto;
+}
+.chat-input-box {
+  box-sizing: border-box;
+  display: flex;
+  height: 80px;
+}
+.chat-input-box > * {
+  outline: none;
+  box-sizing: border-box;
+  border: none;
+}
+.chat-message {
+  width: 85%;
+  resize: none;
+  padding: 10px;
+}
+.send-btn {
+  width: 15%;
+  font-size: 15px;
+}
+.send-btn:disabled {
+  background-color: #eee;
+}
+.send-btn:enabled {
+  background-color: #1e1e1e;
+  color: #fff;
+}
+
+.chat {
+  max-width: 500px;
+  position: relative;
+  padding: 10px;
+}
+.chat.left {
+  align-self: flex-start;
+}
+.chat.right {
+  align-self: flex-end;
+}
+.user {
+  display: flex;
+}
+.user > span {
+  margin: 0px 3px;
+}
+.right > .user {
+  flex-direction: row-reverse;
+}
+.left > .chatting-message {
+  background-color: #fff;
+}
+.right > .chatting-message {
+  background-color: #fee500;
+}
+.chatting-message {
+  padding: 10px;
+  border-radius: 5px;
+}
+.left > .chatting-message {
+  margin-left: 20px;
+}
+.right > .chatting-message {
+  margin-right: 20px;
+}
+.info {
+  align-self: center;
+}
+.info > span {
+  font-size: 1.1em;
+  font-family: ns-b;
+}

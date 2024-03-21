@@ -5,6 +5,7 @@ import Swal from "sweetalert2";
 import SideMenu from "../../component/SideMenu";
 import MemberInfo from "./MemberInfo";
 import MemberPw from "./MemberPw";
+import MemberChat from "./MemberChat";
 
 const MemberMain = (props) => {
   const backServer = process.env.REACT_APP_BACK_SERVER;
@@ -32,6 +33,7 @@ const MemberMain = (props) => {
     { url: "info", text: "내 정보", active: false },
     { url: "pw", text: "비밀번호 변경", active: false },
     { url: "board", text: "작성 글 보기", active: false },
+    { url: "chat", text: "전체채팅", active: false },
   ]);
   return (
     <div className="mypage-wrap">
@@ -54,6 +56,10 @@ const MemberMain = (props) => {
               element={<MemberInfo member={member} logout={logout} />}
             />
             <Route path="/pw" element={<MemberPw />} />
+            <Route
+              path="/chat"
+              element={<MemberChat memberId={member.memberId} />}
+            />
           </Routes>
         </div>
       </div>
